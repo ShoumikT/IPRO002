@@ -1,52 +1,41 @@
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+/**
+ * Inventory manages items by name (unique names assumed).
+ * Uses HashMap for quick lookup.
+ */
 public class Inventory {
-    private GroceryItem[] items = {
-        new Fruit( 1,  "Apple", 1.50),
-        new Fruit(2, "Banana", 0.90),
-        new Vegetable(3, "Carrot", 2.00),
-        new Vegetable(4, "Tomato", 2.50),
-        new Vegetable(5, "Spinach", 3.00)
-    };
+    private final HashMap<String, GroceryItem> items = new HashMap<>();
 
-    public void displayItems() {
-        System.out.println("\nAvailable Groceries:");
-        for (GroceryItem item : items) {
-            item.displayInfo();
-        }
+    public void addItem(GroceryItem item) {
+        if (item == null) return;
+        items.put(item.getName(), item);
     }
 
-    public GroceryItem findItemById(int id) {
-        for (GroceryItem item : items) {
-            if (item.id == id) {
-                return item;
-            }
-        }
-        return null;
+    public boolean removeItem(String name) {
+        if (name == null || !items.containsKey(name)) return false;
+        items.remove(name);
+        return true;
     }
 
-public GroceryItem[] filterByCategory(Category c) {
-        int count = 0;
-        for (GroceryItem item : items) {
-            if (item.category == c) {
-                count++;
-            }
-        }
-
-        GroceryItem[] result = new GroceryItem[count];
-        int index = 0;
-        for (GroceryItem item : items) {
-            if (item.category == c) {
-                result[index] = item;
-                index++;
-            }
-        }
-
-        return result;
+    public GroceryItem getItem(String name) {
+        if (name == null) return null;
+        return items.get(name);
     }
 
-    public void displayFiltered(GroceryItem[] filtered) {
-        for (GroceryItem item : filtered) {
-            item.displayInfo();
+    public ArrayList<GroceryItem> getAllItems() {
+        return new ArrayList<GroceryItem>(items.values());
+    }
+
+    public ArrayList<GroceryItem> listByCategory(Category category) {
+        ArrayList<GroceryItem> list = new ArrayList<>();
+        for (GroceryItem gi : items.values()) {
+            if (gi.getCategory() == category) {
+                list.add(gi);
+            }
         }
+        return list;
     }
 }
-

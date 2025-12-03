@@ -1,3 +1,12 @@
+
+/**
+ * Enum for categories.
+ */
 public enum Category {
-    FRUIT, VEGETABLE
+    FRUIT,
+    VEGETABLE,
+    DAIRY,
+    MEAT,
+    BAKERY,
+    OTHER
 }

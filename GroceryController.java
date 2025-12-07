@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 /**
  * Controller: mediates between Model and View, handles user actions.
- * Note: This controller avoids switch statements and uses if/else logic.
  */
 public class GroceryController {
     private final GroceryModel model;

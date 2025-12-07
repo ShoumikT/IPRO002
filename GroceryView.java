@@ -43,7 +43,6 @@ public class GroceryView {
         Label nameLabel = new Label("Customer Name:");
         customerNameField.setPrefColumnCount(12);
         Button setNameBtn = new Button("Set Name");
-        // anonymous handler (no switch)
         setNameBtn.setOnAction(e -> {
             String name = customerNameField.getText();
             if (name != null && name.trim().length() > 0) {
@@ -269,7 +268,6 @@ public class GroceryView {
         Label subtotalLbl = new Label(String.format("Subtotal: $%.2f", model.getCart().getTotal()));
         Label pointsAvailable = new Label(String.format("Available points: %d", controller.getCustomerPoints()));
 
-        // Payment method selection via radio buttons (no switch)
         ToggleGroup tg = new ToggleGroup();
         RadioButton cashRb = new RadioButton("Cash");
         cashRb.setToggleGroup(tg);
